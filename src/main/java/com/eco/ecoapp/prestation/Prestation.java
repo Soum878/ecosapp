@@ -5,12 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
+import com.eco.ecoapp.categorie.Categorie;
 import com.eco.ecoapp.client.Client;
 
-
 @Entity
-@Table(name="prestations")
+@Table(name="prestations", uniqueConstraints={@UniqueConstraint(columnNames={"designation"})})
 public class Prestation {
 	
 	@Id
@@ -26,6 +27,9 @@ public class Prestation {
 	@ManyToOne
 	private Client client;
 	
+	@ManyToOne
+	private Categorie categorie;
+
 	public Prestation() {
 		super();
 	}
@@ -36,7 +40,7 @@ public class Prestation {
 	}
 
 	public Prestation(Long id, String designation, String observation, String situation, Boolean status,
-			String dateLimite, String dateEchue, Client client) {
+			String dateLimite, String dateEchue, Client client, Categorie categorie ) {
 		super();
 		this.id = id;
 		this.designation = designation;
@@ -46,6 +50,7 @@ public class Prestation {
 		this.dateLimite = dateLimite;
 		this.dateEchue = dateEchue;
 		this.client = client;
+		this.categorie = categorie;
 	}
 
 	public Long getId() {
@@ -111,4 +116,13 @@ public class Prestation {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+	
 }

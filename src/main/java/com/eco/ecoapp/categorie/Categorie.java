@@ -20,6 +20,11 @@ public class Categorie {
 		super();
 	}
 	
+	public Categorie(Long id) {
+		super();
+		this.id = id;
+	}
+
 	public Categorie(String name) {
 		super();
 		this.name = name;

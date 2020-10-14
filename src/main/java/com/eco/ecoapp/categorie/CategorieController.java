@@ -24,7 +24,7 @@ public class CategorieController {
 	private CategorieRepository categorieRepository;
 
 	/*
-	 *	Ajouter categorie
+	 *	Ajouter une categorie
 	 */
 	
 	@PostMapping("/categories")
@@ -43,7 +43,7 @@ public class CategorieController {
 	}
 	
 	/*
-	 * 	Modifier un client
+	 * 	Modifier une categorie
 	 */
 	
 	@PutMapping("/categories/{id}")
@@ -61,11 +61,11 @@ public class CategorieController {
 	}
 	
 	/*
-	 * 	Supprimer un client
+	 * 	Supprimer une categorie **
 	 */
 	
 	@DeleteMapping("/categories/{id}")
-	ResponseEntity<?> deleteClient(@PathVariable Long id) {
+	ResponseEntity<?> deleteCategorie(@PathVariable Long id) {
 		categorieRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
